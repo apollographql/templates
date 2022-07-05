@@ -1,0 +1,40 @@
+{
+  "name": "subgraph-template-javascript-apollo-server",
+  "private": true,
+  "description": "A template for javascript projects with pre-configured tooling",
+  "version": "0.0.0",
+  "author": "Apollo <watson@apollographql.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/apollographql/templates"
+  },
+  "homepage": "https://github.com/apollographql/templates#readme",
+  "bugs": {
+    "url": "https://github.com/apollographql/templates/issues"
+  },
+  "main": "index.js",
+  "engines": {
+    "node": ">=14.0"
+  },
+  "scripts": {
+    "dev":"nodemon --watch \"src/**\" --ext \"js,json,graphql\" --exec \"npm run start\"",
+    "dev-mocked":"nodemon --watch \"src/**\" --ext \"js,json,graphql\" --exec \"npm run start\"",
+    "start": "node index.js",
+    "start:mocked": "SHOULD_MOCK=true npm start",
+    "start:dev": "nodemon --watch \"src/**\" --ext \"ts,json,graphql\" --exec \"npm run build && npm run start\" --ignore ./src/__generated__/ --ignore ./src/datasources/BarAPI.ts",
+    "start:dev-mocked": "nodemon --watch \"src/**\" --ext \"ts,json,graphql\" --exec \"npm run build && npm run start:mocked\" --ignore ./__generated__/ --ignore ./src/datasources/BarAPI.ts",
+    "test": "jest",
+    "test:ci": "jest --coverage --ci --maxWorkers=2 --reporters=default --reporters=jest-junit"
+  },
+  "dependencies": {
+    "@apollo/subgraph": "latest",
+    "apollo-server": "latest",
+    "graphql": "latest",
+    "graphql-tag": "latest"
+  },
+  "devDependencies": {
+    "jest": "27.5.1",
+    "nodemon": "^2.0.15"
+  }
+}
