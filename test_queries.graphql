@@ -1,0 +1,20 @@
+query getThing($id: ID!) {
+  thing(id: $id) {
+    name
+  }
+}
+
+query getThingEntity($id: ID!) {
+  _entities(representations: [{ __typename: "Thing", id: $id }]) {
+    ... on Thing {
+      name
+    }
+  }
+}
+
+mutation createThing($id: ID!, $name: String!) {
+  createThing(thing: { id: $id, name: $name }) {
+    id
+    name
+  }
+}

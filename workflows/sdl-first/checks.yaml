@@ -1,0 +1,29 @@
+name: PR Checks
+
+on: push
+
+jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    steps: # TODO: insert testing logic here
+
+  check_schema:
+    name: Check Schema with Apollo Studio
+    if: false
+    runs-on: ubuntu-latest
+    env:
+      # TODO: get this dynamically if possible, or add instructions for the user to set it in the README
+      SUBGRAPH_NAME: TODO
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+      - name: Install Rover
+        run: |
+          curl -sSL https://rover.apollo.dev/nix/latest | sh
+          echo "$HOME/.rover/bin" >> $GITHUB_PATH
+      - name: Schema Check
+        # TODO: Update path to schema file as needed
+        run: rover subgraph check ${{ secrets.APOLLO_GRAPH_REF }} --schema schema.graphql --name ${{ env.SUBGRAPH_NAME }}
+        env:
+          APOLLO_KEY: ${{ secrets.APOLLO_KEY }}
