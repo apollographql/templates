@@ -21,7 +21,7 @@ In order to be included in the list of templates that can be used with [Rover], 
    1. [MIT]
    2. [Apache 2.0]
 3. Include a `README.md` file in the root of the repo which describes what the template does, and the next steps to take after running `rover template use` with the template. For an example, see the [Apollo Server template].
-4. Include a `.github/workflows` directory with GitHub Actions workflows which:
+4. Include a `.github/workflows` directory with GitHub Actions workflows (see "Author Resources" below for examples) which:
    1. Execute tests on pull request
    2. Run schema checks against Apollo Studio on pull request
    3. Publish schema to Apollo Studio on push to the default branch
