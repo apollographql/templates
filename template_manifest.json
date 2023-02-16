@@ -1,0 +1,25 @@
+{
+  "client": [
+    {
+      "id": "nextjs-vercel",
+      "git": "https://github.com/apollographql/subgraph-template-go-gqlgen-boilerplate",
+      "display": "Next.js App deployed on Vercel",
+      "language": "Typescript"
+    }
+  ],
+  "subgraph": [
+    {
+      "id": "subgraph-go-gqlgen",
+      "git": "https://github.com/apollographql/subgraph-template-go-gqlgen-boilerplate",
+      "display": "Go (gqlgen)",
+      "language": "Go"
+    }
+  ],
+  "router": [
+    {
+      "id": "railway",
+      "git": "https://github.com/michael-watson/apollo-router-railway",
+      "display": "Railway"
+    }
+  ]
+}
