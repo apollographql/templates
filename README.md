@@ -1,5 +1,7 @@
 # Apollo Templates
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/127b7d4b-f18e-4224-8338-7fe427598569/deploy-status)](https://app.netlify.com/sites/apollo-templates/deploys)
+
 This repository serves as a guide and reference for building new templates that will be accessible via [Rover].
 
 ## Contribution Guidelines
