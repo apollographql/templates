@@ -13,13 +13,13 @@ use crate::{
 };
 
 pub async fn handle_request(request: Request) -> Result<Response<Body>, Error> {
-    let query = if request.method() == Method::POST {
-        graphql_request_from_post(request)
-    } else if request.method() == Method::GET {
-        graphql_request_from_get(request)
-    } else {
-        Err(ClientError::MethodNotAllowed)
+    let query = match *request.method() {
+        Method::OPTIONS => return Ok(Response::new(Body::Text("".to_string())).map(add_cors)),
+        Method::POST => graphql_request_from_post(request),
+        Method::GET => graphql_request_from_get(request),
+        _ => Err(ClientError::MethodNotAllowed),
     };
+
     let query = match query {
         Err(e) => {
             return error_response(StatusCode::BAD_REQUEST, graphql_error(e));
@@ -30,14 +30,11 @@ pub async fn handle_request(request: Request) -> Result<Response<Body>, Error> {
         serde_json::to_string(&SCHEMA.execute(query).await).map_err(ServerError::from)?;
     Response::builder()
         .status(200)
-        .header(ACCESS_CONTROL_ALLOW_ORIGIN, HeaderValue::from_static("https://studio.apollographql.com"))
-        .header(ACCESS_CONTROL_ALLOW_HEADERS, HeaderValue::from_static("*"))
-        .header(ACCESS_CONTROL_ALLOW_METHODS, HeaderValue::from_static("GET, POST, OPTIONS"))
-        .header(ACCESS_CONTROL_ALLOW_CREDENTIALS, HeaderValue::from_static("true"))
-        .header(CONTENT_TYPE, HeaderValue::from_static("application/json"))
         .body(Body::Text(response_body))
+        .header(CONTENT_TYPE, HeaderValue::from_static("application/json"))
         .map_err(ServerError::from)
         .map_err(Error::from)
+    .map(add_cors)
 }
 
 fn graphql_error(message: impl Display) -> String {
@@ -47,7 +44,15 @@ fn graphql_error(message: impl Display) -> String {
 }
 
 fn error_response(status: StatusCode, body: String) -> Result<Response<Body>, Error> {
-    Ok(Response::builder().status(status).body(Body::Text(body))?)
+    Ok(Response::builder().status(status).body(Body::Text(body)).map(add_cors)?)
+}
+
+fn add_cors(response: Response<Body>) -> Response<Body> {
+    response
+        .header(ACCESS_CONTROL_ALLOW_ORIGIN, HeaderValue::from_static("https://studio.apollographql.com"))
+        .header(ACCESS_CONTROL_ALLOW_HEADERS, HeaderValue::from_static("*"))
+        .header(ACCESS_CONTROL_ALLOW_METHODS, HeaderValue::from_static("GET, POST, OPTIONS"))
+        .header(ACCESS_CONTROL_ALLOW_CREDENTIALS, HeaderValue::from_static("true"))
 }
 
 fn graphql_request_from_post(request: Request) -> Result<GraphQlRequest, ClientError> {
