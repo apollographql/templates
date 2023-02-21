@@ -3,7 +3,8 @@ use std::fmt::Display;
 use async_graphql::{
     Request as GraphQlRequest, Response as GraphQlResponse, ServerError as GraphQlError,
 };
-use http::{Method, StatusCode};
+use http::{HeaderValue, Method, StatusCode};
+use http::header::{ACCESS_CONTROL_ALLOW_CREDENTIALS, ACCESS_CONTROL_ALLOW_HEADERS, ACCESS_CONTROL_ALLOW_METHODS, ACCESS_CONTROL_ALLOW_ORIGIN};
 use lambda_http::{Body, Error, Request, RequestExt, Response};
 
 use crate::{
@@ -29,6 +30,10 @@ pub async fn handle_request(request: Request) -> Result<Response<Body>, Error> {
         serde_json::to_string(&SCHEMA.execute(query).await).map_err(ServerError::from)?;
     Response::builder()
         .status(200)
+        .header(ACCESS_CONTROL_ALLOW_ORIGIN, HeaderValue::from_static("https://studio.apollographql.com"))
+        .header(ACCESS_CONTROL_ALLOW_HEADERS, HeaderValue::from_static("*"))
+        .header(ACCESS_CONTROL_ALLOW_METHODS, HeaderValue::from_static("GET, POST, OPTIONS"))
+        .header(ACCESS_CONTROL_ALLOW_CREDENTIALS, HeaderValue::from_static("true"))
         .body(Body::Text(response_body))
         .map_err(ServerError::from)
         .map_err(Error::from)
