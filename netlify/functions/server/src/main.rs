@@ -1,7 +1,6 @@
-use aws_lambda_events::event::apigw::{ApiGatewayProxyRequest, ApiGatewayProxyResponse};
 use aws_lambda_events::encodings::Body;
-use http::header::HeaderMap;
-use lambda_runtime::{handler_fn, Context, Error};
+use http::Response;
+use lambda_http::{service_fn, run, Request, Error};
 use log::LevelFilter;
 use simple_logger::SimpleLogger;
 
@@ -9,21 +8,14 @@ use simple_logger::SimpleLogger;
 async fn main() -> Result<(), Error> {
     SimpleLogger::new().with_level(LevelFilter::Info).init().unwrap();
 
-    let func = handler_fn(my_handler);
-    lambda_runtime::run(func).await?;
+    let func = service_fn(my_handler);
+    run(func).await?;
     Ok(())
 }
 
-pub(crate) async fn my_handler(event: ApiGatewayProxyRequest, _ctx: Context) -> Result<ApiGatewayProxyResponse, Error> {
-    let path = event.path.unwrap();
-
-    let resp = ApiGatewayProxyResponse {
-        status_code: 200,
-        headers: HeaderMap::new(),
-        multi_value_headers: HeaderMap::new(),
-        body: Some(Body::Text(format!("Hello from '{}'", path))),
-        is_base64_encoded: Some(false),
-    };
-
-    Ok(resp)
+pub(crate) async fn my_handler(_request: Request) -> http::Result<Response<Body>> {
+    Response::builder()
+        .status(200)
+        .header("Content-Type", "text/plain")
+        .body(format!("Hello! I'm updated now.").into())
 }
