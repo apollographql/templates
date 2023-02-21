@@ -1,0 +1,70 @@
+[
+  {
+    "id": "subgraph-go-gqlgen",
+    "repo_url": "https://github.com/apollographql/subgraph-template-go-gqlgen-boilerplate",
+    "download_url": "https://github.com/apollographql/subgraph-template-go-gqlgen-boilerplate/archive/refs/heads/main.tar.gz",
+    "name": "Go (gqlgen)",
+    "description": "A Go subgraph template using gqlgen",
+    "language": "GO"
+  },
+  {
+    "id": "subgraph-java-spring-graphql",
+    "repo_url": "https://github.com/apollographql/subgraph-template-java-spring-graphql-boilerplate",
+    "download_url": "https://github.com/apollographql/subgraph-template-java-spring-graphql-boilerplate/archive/refs/heads/main.tar.gz",
+    "name": "Spring GraphQL",
+    "description": "A Java subgraph template using Spring GraphQL",
+    "language": "JAVA"
+  },
+  {
+    "id": "subgraph-javascript-apollo-server",
+    "repo_url": "https://github.com/apollographql/subgraph-template-javascript-apollo-server-boilerplate",
+    "download_url": "https://github.com/apollographql/subgraph-template-javascript-apollo-server-boilerplate/archive/refs/heads/main.tar.gz",
+    "name": "Apollo Server (JS)",
+    "description": "For building a schema-first JavaScript subgraph with Apollo Server and Node.js",
+    "language": "JAVASCRIPT"
+  },
+  {
+    "id": "subgraph-graphql-kotlin",
+    "repo_url": "https://github.com/apollographql/subgraph-template-graphql-kotlin-boilerplate",
+    "download_url": "https://github.com/apollographql/subgraph-template-graphql-kotlin-boilerplate/archive/refs/heads/main.tar.gz",
+    "name": "GraphQL Kotlin",
+    "description": "A Kotlin subgraph template using GraphQL Kotlin",
+    "language": "KOTLIN"
+  },
+  {
+    "id": "subgraph-python-strawberry-fastapi",
+    "repo_url": "https://github.com/strawberry-graphql/subgraph-template-strawberry-fastapi",
+    "download_url": "https://github.com/strawberry-graphql/subgraph-template-strawberry-fastapi/archive/refs/heads/main.tar.gz",
+    "name": "Strawberry with FastAPI",
+    "description": "For building a code-only Python subgraph with Strawberry, FastAPI, and uvicorn",
+    "language": "PYTHON"
+  },
+  {
+    "id": "subgraph-python-ariadne-fastapi",
+    "repo_url": "https://github.com/patrick91/subgraph-template-ariadne-fastapi",
+    "download_url": "https://github.com/patrick91/subgraph-template-ariadne-fastapi/archive/refs/heads/main.tar.gz",
+    "name": "Ariadne with FastAPI",
+    "description": "For building a schema-first Python subgraph with Ariadne, FastAPI, and uvicorn",
+    "language": "PYTHON"
+  },
+  {
+    "id": "subgraph-rust-async-graphql",
+    "repo_url": "https://github.com/apollographql/subgraph-template-rust-async-graphql",
+    "download_url": "https://github.com/apollographql/subgraph-template-rust-async-graphql/archive/refs/heads/main.tar.gz",
+    "name": "async-graphql with Axum",
+    "description": "For building a code-only Rust subgraph with async-graphql and Axum",
+    "language": "RUST"
+  },
+  {
+    "id": "subgraph-typescript-apollo-server",
+    "repo_url": "https://github.com/apollographql/subgraph-template-typescript-apollo-server-boilerplate",
+    "download_url": "https://github.com/apollographql/subgraph-template-typescript-apollo-server-boilerplate/archive/refs/heads/main.tar.gz",
+    "description": "For building a schema-first TypeScript subgraph with Apollo Server and Node.js",
+    "name": "Apollo Server (TS)",
+    "language": "TYPESCRIPT"
+  }
+]
+
+
+
+
