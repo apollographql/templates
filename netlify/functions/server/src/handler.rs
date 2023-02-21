@@ -5,6 +5,7 @@ use async_graphql::{
 };
 use http::{HeaderValue, Method, StatusCode};
 use http::header::{ACCESS_CONTROL_ALLOW_CREDENTIALS, ACCESS_CONTROL_ALLOW_HEADERS, ACCESS_CONTROL_ALLOW_METHODS, ACCESS_CONTROL_ALLOW_ORIGIN, CONTENT_TYPE};
+use http::response::Builder;
 use lambda_http::{Body, Error, Request, RequestExt, Response};
 
 use crate::{
@@ -14,7 +15,7 @@ use crate::{
 
 pub async fn handle_request(request: Request) -> Result<Response<Body>, Error> {
     let query = match *request.method() {
-        Method::OPTIONS => return Ok(Response::new(Body::Text("".to_string())).map(add_cors)),
+        Method::OPTIONS => return add_cors(Response::builder().status(200)).body(Body::Empty).map_err(Error::from),
         Method::POST => graphql_request_from_post(request),
         Method::GET => graphql_request_from_get(request),
         _ => Err(ClientError::MethodNotAllowed),
@@ -28,13 +29,12 @@ pub async fn handle_request(request: Request) -> Result<Response<Body>, Error> {
     };
     let response_body =
         serde_json::to_string(&SCHEMA.execute(query).await).map_err(ServerError::from)?;
-    Response::builder()
+    add_cors(Response::builder()
         .status(200)
+        .header(CONTENT_TYPE, HeaderValue::from_static("application/json")))
         .body(Body::Text(response_body))
-        .header(CONTENT_TYPE, HeaderValue::from_static("application/json"))
         .map_err(ServerError::from)
         .map_err(Error::from)
-    .map(add_cors)
 }
 
 fn graphql_error(message: impl Display) -> String {
@@ -44,10 +44,10 @@ fn graphql_error(message: impl Display) -> String {
 }
 
 fn error_response(status: StatusCode, body: String) -> Result<Response<Body>, Error> {
-    Ok(Response::builder().status(status).body(Body::Text(body)).map(add_cors)?)
+    Ok(add_cors(Response::builder().status(status)).body(Body::Text(body))?)
 }
 
-fn add_cors(response: Response<Body>) -> Response<Body> {
+fn add_cors(response: Builder) -> Builder {
     response
         .header(ACCESS_CONTROL_ALLOW_ORIGIN, HeaderValue::from_static("https://studio.apollographql.com"))
         .header(ACCESS_CONTROL_ALLOW_HEADERS, HeaderValue::from_static("*"))
