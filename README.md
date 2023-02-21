@@ -4,7 +4,7 @@ This repository serves as a guide and reference for building new templates that 
 
 ## Contribution Guidelines
 
-Templates that are submitted by the community are expected to be maintained by the community. Because of the difficulty in enforcing this, we are currently only accepting templates contributed by the maintainer of the primary libraries that the template is built around. The template's repository should be located under the same account or organization as the primary library. For example, a template for Apollo Server should be located under the apollographql organization.
+Templates that are submitted by the community are expected to be maintained by the community. Because of the difficulty in enforcing this, we are currently only accepting templates contributed by the maintainers of the primary libraries that the template is built around. The template's repository should be located under the same account or organization as the primary library. For example, a template for Apollo Server should be located under the `apollographql` organization.
 
 In order to keep the template up to date with the latest template requirements, please follow releases on this repository. We will create a release each time a requirement changes or an optional feature is added.
 
