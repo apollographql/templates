@@ -1,0 +1,39 @@
+name: New Template
+description: Contribute a new template for distribution (e.g., Rover and Apollo's docs)
+assignees:
+  - dbanty
+body:
+  - type: markdown
+    attributes:
+      value: |
+          Thanks for contributing a new template! Please fill out the following information to help us review your submission.
+  - type: input
+    id: name
+    attributes:
+      label: Template Name
+      description: The name of the template as it will appear in Rover. Typically this includes any notable frameworks.
+      placeholder: e.g., "Strawberry with FastAPI"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Template Description
+      description: A detailed description of what the template does (for the docs).
+      placeholder: e.g., "For building a code-only Python subgraph with Strawberry, FastAPI, and uvicorn"
+    validations:
+      required: true
+  - type: input
+    id: language
+    attributes:
+        label: Language
+        description: The programming language of the template.
+        placeholder: e.g., "Python"
+  - type: input
+    id: repo
+    attributes:
+      label: Template Repository URL
+      description: A link to the public repository for the template. This should typically live in the GitHub organization of the framework.
+      placeholder: e.g., "https://github.com/strawberry-graphql/subgraph-template-strawberry-fastapi"
+    validations:
+      required: true

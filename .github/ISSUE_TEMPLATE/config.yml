@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: GitHub Discussions
+    url: https://github.com/apollographql/templates/discussions
+    about: Discuss any template topics here in structured threads (issues are only for contributions).
+  - name: Apollo Discord
+    url: https://discord.gg/graphos
+    about: Ask questions and chat with the community about anything GraphQL in real-time.
