@@ -41,8 +41,8 @@
   },
   {
     "id": "subgraph-python-ariadne-fastapi",
-    "repo_url": "https://github.com/patrick91/subgraph-template-ariadne-fastapi",
-    "download_url": "https://github.com/patrick91/subgraph-template-ariadne-fastapi/archive/refs/heads/main.tar.gz",
+    "repo_url": "https://github.com/mirumee/subgraph-template-ariadne-fastapi",
+    "download_url": "https://github.com/mirumee/subgraph-template-ariadne-fastapi/archive/refs/heads/main.tar.gz",
     "name": "Ariadne with FastAPI",
     "description": "For building a schema-first Python subgraph with Ariadne, FastAPI, and uvicorn",
     "language": "PYTHON"
