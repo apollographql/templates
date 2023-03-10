@@ -10,7 +10,7 @@ Templates that are submitted by the community are expected to be maintained by t
 
 In order to keep the template up to date with the latest template requirements, please follow releases on this repository. We will create a release each time a requirement changes or an optional feature is added.
 
-Once your template meets all of the requirements below, contribute the template by creating a pull request to the template registry.
+Once your template meets all of the requirements below, contribute the template by [opening an issue](https://github.com/apollographql/templates/issues/new?assignees=dbanty&labels=&template=new_template.yml).
 
 <!-- TODO: Link to registry -->
 
