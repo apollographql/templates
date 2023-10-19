@@ -1,6 +1,7 @@
-use lazy_static::lazy_static;
-use crate::schema::template::{Language, Template};
 use async_graphql::{EmptyMutation, EmptySubscription, Object, ID};
+use lazy_static::lazy_static;
+
+use crate::schema::template::{Language, Template};
 
 mod template;
 
@@ -45,10 +46,7 @@ impl Query {
 }
 
 fn get_template_by_id(id: ID) -> Option<Template> {
-    TEMPLATES
-        .iter()
-        .find(|template| template.id == id)
-        .cloned()
+    TEMPLATES.iter().find(|template| template.id == id).cloned()
 }
 
 type Schema = async_graphql::Schema<Query, EmptyMutation, EmptySubscription>;
