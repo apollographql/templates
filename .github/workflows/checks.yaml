@@ -1,0 +1,30 @@
+name: Tests and Checks
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  merge_group:
+
+jobs:
+  check_schema:
+    name: Check Schema with Apollo Studio
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Rover
+        run: |
+          curl -sSL https://rover.apollo.dev/nix/latest | sh
+          echo "$HOME/.rover/bin" >> $GITHUB_PATH
+      - name: Export schema
+        run: cd netlify/functions/server && cargo run --bin export-schema >> schema.graphql
+      - run: rover subgraph check ${{ secrets.APOLLO_GRAPH_REF }} --schema netlify/functions/server/schema.graphql --name templates
+        env:
+          APOLLO_KEY: ${{ secrets.APOLLO_KEY }}
+          APOLLO_VCS_COMMIT: ${{ github.event.pull_request.head.sha }}
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        run: cd netlify/functions/server && cargo build

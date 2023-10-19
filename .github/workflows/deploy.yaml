@@ -1,0 +1,24 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  publish_schema:
+    name: Publish new schema to Apollo Studio
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Rover
+        run: |
+          curl -sSL https://rover.apollo.dev/nix/latest | sh
+          echo "$HOME/.rover/bin" >> $GITHUB_PATH
+      - name: Export schema
+        run: cd netlify/functions/server && cargo run --bin export-schema >> schema.graphql
+      - name: Publish Schema
+        run: rover subgraph publish ${{ secrets.APOLLO_GRAPH_REF }} --schema netlify/functions/server/schema.graphql --name templates --routing-url ${{ secrets.PRODUCTION_URL }}
+        env:
+          APOLLO_KEY: ${{ secrets.APOLLO_KEY }}
+          APOLLO_VCS_COMMIT: ${{ github.event.pull_request.head.sha }}
