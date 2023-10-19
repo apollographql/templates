@@ -62,6 +62,14 @@
     "description": "For building a schema-first TypeScript subgraph with Apollo Server and Node.js",
     "name": "Apollo Server (TS)",
     "language": "TYPESCRIPT"
+  },
+  {
+    "id": "subgraph-csharp-hotchocolate-annotation",
+    "repo_url": "https://github.com/apollographql/subgraph-template-dotnet-hotchocolate-annotation-boilerplate",
+    "download_url": "https://github.com/apollographql/subgraph-template-dotnet-hotchocolate-annotation-boilerplate/archive/refs/heads/main.tar.gz",
+    "description": "For building schema using annotations with the Hot Chocolate framework",
+    "name": "Hot Chocolate (Annotations)",
+    "language": "C_SHARP"
   }
 ]
 
