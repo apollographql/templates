@@ -62,7 +62,7 @@ dependencies = [
  "async-graphql-value",
  "async-stream",
  "async-trait",
- "base64",
+ "base64 0.13.1",
  "bytes",
  "fast_chemail",
  "fnv",
@@ -93,7 +93,7 @@ checksum = "6e4bb7b7b2344d24af860776b7fe4e4ee4a67cd965f076048d023f555703b854"
 dependencies = [
  "Inflector",
  "async-graphql-parser",
- "darling 0.20.3",
+ "darling",
  "proc-macro-crate",
  "proc-macro2",
  "quote",
@@ -178,11 +178,11 @@ checksum = "d468802bab17cbc0cc575e9b053f41e72aa36bfa6b7f55e3529ffa43161b97fa"
 
 [[package]]
 name = "aws_lambda_events"
-version = "0.7.3"
+version = "0.10.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d376097ccf49a2699d554558267b2735f62ce94ee1840a9f73253ad7c26fbaa7"
+checksum = "65991dbc3bfb586939ba1527eefdc99bc21157b6ec891f180fb1e16e2dddc7a9"
 dependencies = [
- "base64",
+ "base64 0.21.5",
  "bytes",
  "chrono",
  "flate2",
@@ -191,7 +191,7 @@ dependencies = [
  "http-serde",
  "query_map",
  "serde",
- "serde_derive",
+ "serde_dynamo",
  "serde_json",
  "serde_with",
 ]
@@ -216,6 +216,12 @@ name = "base64"
 version = "0.13.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9e1b586273c5702936fe7b7d6896644d8be71e6314cfe09d3167c95f712589e8"
+
+[[package]]
+name = "base64"
+version = "0.21.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "35636a1494ede3b646cc98f74f8e62c773a38a659ebc777a2cf26b9b74171df9"
 
 [[package]]
 name = "bitflags"
@@ -373,36 +379,12 @@ dependencies = [
 
 [[package]]
 name = "darling"
-version = "0.14.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c0808e1bd8671fb44a113a14e13497557533369847788fa2ae912b6ebfce9fa8"
-dependencies = [
- "darling_core 0.14.3",
- "darling_macro 0.14.3",
-]
-
-[[package]]
-name = "darling"
 version = "0.20.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0209d94da627ab5605dcccf08bb18afa5009cfbef48d8a8b7d7bdbc79be25c5e"
 dependencies = [
- "darling_core 0.20.3",
- "darling_macro 0.20.3",
-]
-
-[[package]]
-name = "darling_core"
-version = "0.14.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "001d80444f28e193f30c2f293455da62dcf9a6b29918a4253152ae2b1de592cb"
-dependencies = [
- "fnv",
- "ident_case",
- "proc-macro2",
- "quote",
- "strsim",
- "syn 1.0.107",
+ "darling_core",
+ "darling_macro",
 ]
 
 [[package]]
@@ -421,22 +403,11 @@ dependencies = [
 
 [[package]]
 name = "darling_macro"
-version = "0.14.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b36230598a2d5de7ec1c6f51f72d8a99a9208daff41de2084d06e3fd3ea56685"
-dependencies = [
- "darling_core 0.14.3",
- "quote",
- "syn 1.0.107",
-]
-
-[[package]]
-name = "darling_macro"
 version = "0.20.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "836a9bbc7ad63342d6d6e7b815ccab164bc77a2d95d84bc3117a8c0d5c98e2d5"
 dependencies = [
- "darling_core 0.20.3",
+ "darling_core",
  "quote",
  "syn 2.0.38",
 ]
@@ -825,44 +796,25 @@ dependencies = [
 
 [[package]]
 name = "lambda_http"
-version = "0.7.3"
+version = "0.8.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "16fd842ce9fc6908f1688030cf8b6841e2009bd874eb21244f124570ac06264f"
+checksum = "8b15e8ab48a5d8eab3110567008caad4d191924d1470b74c5c8b802b904b5a34"
 dependencies = [
  "aws_lambda_events",
- "base64",
+ "base64 0.21.5",
  "bytes",
  "encoding_rs",
+ "futures",
  "http",
  "http-body",
  "hyper",
- "lambda_runtime 0.7.3",
+ "lambda_runtime",
  "mime",
  "percent-encoding",
  "serde",
  "serde_json",
  "serde_urlencoded",
  "url",
-]
-
-[[package]]
-name = "lambda_runtime"
-version = "0.7.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bd32d5799db2155ae4d47116bb3e169b59f531ced4d5762a10c2125bdd2bf134"
-dependencies = [
- "async-stream",
- "bytes",
- "futures",
- "http",
- "hyper",
- "lambda_runtime_api_client 0.7.0",
- "serde",
- "serde_json",
- "tokio",
- "tokio-stream",
- "tower",
- "tracing",
 ]
 
 [[package]]
@@ -877,7 +829,7 @@ dependencies = [
  "http",
  "http-serde",
  "hyper",
- "lambda_runtime_api_client 0.8.0",
+ "lambda_runtime_api_client",
  "serde",
  "serde_json",
  "serde_path_to_error",
@@ -885,18 +837,6 @@ dependencies = [
  "tokio-stream",
  "tower",
  "tracing",
-]
-
-[[package]]
-name = "lambda_runtime_api_client"
-version = "0.7.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7210012be904051520f0dc502140ba599bae3042b65b3737b87727f1aa88a7d6"
-dependencies = [
- "http",
- "hyper",
- "tokio",
- "tower-service",
 ]
 
 [[package]]
@@ -1265,6 +1205,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "serde_dynamo"
+version = "4.2.7"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ba7e04e6ccab970073e94e691746e6e737de039317fb3ebf47c7e61598822434"
+dependencies = [
+ "base64 0.21.5",
+ "serde",
+]
+
+[[package]]
 name = "serde_json"
 version = "1.0.93"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1299,14 +1249,15 @@ dependencies = [
 
 [[package]]
 name = "serde_with"
-version = "2.2.0"
+version = "3.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "30d904179146de381af4c93d3af6ca4984b3152db687dacb9c3c35e86f39809c"
+checksum = "64cd236ccc1b7a29e7e2739f27c0b2dd199804abc4290e32f59f3b68d6405c23"
 dependencies = [
- "base64",
+ "base64 0.21.5",
  "chrono",
  "hex",
  "indexmap 1.9.2",
+ "indexmap 2.0.2",
  "serde",
  "serde_json",
  "serde_with_macros",
@@ -1315,14 +1266,14 @@ dependencies = [
 
 [[package]]
 name = "serde_with_macros"
-version = "2.2.0"
+version = "3.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a1966009f3c05f095697c537312f5415d1e3ed31ce0a56942bac4c771c5c335e"
+checksum = "93634eb5f75a2323b16de4748022ac4297f9e76b6dced2be287a099f41b5e788"
 dependencies = [
- "darling 0.14.3",
+ "darling",
  "proc-macro2",
  "quote",
- "syn 1.0.107",
+ "syn 2.0.38",
 ]
 
 [[package]]
@@ -1333,7 +1284,7 @@ dependencies = [
  "aws_lambda_events",
  "http",
  "lambda_http",
- "lambda_runtime 0.8.2",
+ "lambda_runtime",
  "lazy_static",
  "log",
  "serde",
