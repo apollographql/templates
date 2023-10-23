@@ -15,16 +15,16 @@ path = "src/export_schema.rs"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-async-graphql = { version = "5.0.6", features = ["url"] }
-aws_lambda_events = "0.7.3"
+async-graphql = { version = "6.0.0", features = ["url"] }
+aws_lambda_events = "0.10.0"
 http = "0.2.4"
-lambda_http = "0.7.3"
-lambda_runtime = "0.7.3"
+lambda_http = "0.8.1"
+lambda_runtime = "0.8.0"
 lazy_static = "1.4.0"
 log = "0.4.14"
 serde = "1.0.152"
 serde_json = "1.0.93"
 simple_logger = "4.0.0"
 thiserror = "1.0.38"
-tokio = "1.6.1"
+tokio = "1.33.0"
 url = { version = "2.3.1", features = ["serde"] }
