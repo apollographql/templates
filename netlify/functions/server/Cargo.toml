@@ -17,7 +17,7 @@ path = "src/export_schema.rs"
 [dependencies]
 async-graphql = { version = "6.0.9", features = ["url"] }
 aws_lambda_events = "0.10.0"
-http = "0.2.4"
+http = "0.2.9"
 lambda_http = "0.8.1"
 lambda_runtime = "0.8.0"
 lazy_static = "1.4.0"
