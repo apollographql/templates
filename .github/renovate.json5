@@ -1,9 +1,13 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "packageRules": [
-      {
-        "matchPackagePatterns": ["aws_lambda_events", "lambda_http", "lambda_runtime"],
-        "groupName": "lambda"
-      }
-  ]
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  packageRules: [
+    {
+      groupName: 'lambda',
+      matchPackageNames: [
+        '/aws_lambda_events/',
+        '/lambda_http/',
+        '/lambda_runtime/',
+      ],
+    },
+  ],
 }
