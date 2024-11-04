@@ -193,22 +193,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "aws_lambda_events"
-version = "0.14.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4e84ed7ec0561e54444ad328c76b633f2946b77c234c99baf18c9e84250ceea1"
-dependencies = [
- "base64 0.21.6",
- "bytes",
- "http",
- "http-body",
- "http-serde",
- "query_map",
- "serde",
- "serde_json",
-]
-
-[[package]]
 name = "backtrace"
 version = "0.3.69"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -778,11 +762,11 @@ dependencies = [
 
 [[package]]
 name = "lambda_http"
-version = "0.9.3"
+version = "0.9.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5107d9a9513f340fc9f80ec01ce88c81ab11de0a0826c9c3896504b602ae788b"
+checksum = "9c4392009050cfb9c59dbfeebe0f63d23ea89462b954710ae9c67823aee252c9"
 dependencies = [
- "aws_lambda_events 0.14.0",
+ "aws_lambda_events",
  "base64 0.21.6",
  "bytes",
  "encoding_rs",
@@ -1256,7 +1240,7 @@ name = "server"
 version = "0.1.0"
 dependencies = [
  "async-graphql",
- "aws_lambda_events 0.13.1",
+ "aws_lambda_events",
  "http",
  "lambda_http",
  "lambda_runtime",
