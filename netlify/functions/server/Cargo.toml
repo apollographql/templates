@@ -15,11 +15,14 @@ path = "src/export_schema.rs"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-async-graphql = { version = "7.0.10", features = ["url"] }
+# Even patch updates to these AWS packages break Netlify's functions. Use extreme care if changing these versions.
 aws_lambda_events = "=0.13.0"
-http = "1.1.0"
 lambda_http = "=0.9.0"
 lambda_runtime = "=0.9.0"
+
+
+async-graphql = { version = "7.0.10", features = ["url"] }
+http = "1.1.0"
 lazy_static = "1.4.0"
 log = "0.4.20"
 serde = "1.0.214"
