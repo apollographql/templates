@@ -21,7 +21,7 @@ lambda_http = "=0.9.0"
 lambda_runtime = "=0.9.0"
 
 
-async-graphql = { version = "7.0.10", features = ["url"] }
+async-graphql = { version = "7.0.11", features = ["url"] }
 http = "1.1.0"
 lazy_static = "1.4.0"
 log = "0.4.20"
