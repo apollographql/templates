@@ -28,6 +28,6 @@ log = "0.4.20"
 serde = "1.0.214"
 serde_json = "1.0.132"
 simple_logger = "5.0.0"
-thiserror = "1.0.66"
+thiserror = "2.0.0"
 tokio = "1.36.0"
 url = { version = "2.5.0", features = ["serde"] }
