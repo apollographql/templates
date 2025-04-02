@@ -64,12 +64,13 @@
     "language": "TYPESCRIPT"
   },
   {
-    "id": "subgraph-csharp-hotchocolate-annotation",
-    "repo_url": "https://github.com/apollographql/subgraph-template-dotnet-hotchocolate-annotation-boilerplate",
-    "download_url": "https://github.com/apollographql/subgraph-template-dotnet-hotchocolate-annotation-boilerplate/archive/refs/heads/main.tar.gz",
-    "description": "For building schema using annotations with the Hot Chocolate framework",
-    "name": "Hot Chocolate (Annotations)",
-    "language": "C_SHARP"
+    "id": "connectors-starter",
+    "repo_url": "https://github.com/apollographql/rover-connectors-starter",
+    "download_url": "https://github.com/apollographql/rover-connectors-starter/archive/refs/heads/main.tar.gz",
+    "description": "A template used by the Rover CLI to initialize an API orchestration project with Apollo Connectors",
+    "name": "Apollo Connectors Starter",
+    "init_ready": true,
+    "language": "GRAPHQL"
   }
 ]
 

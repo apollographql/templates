@@ -9,7 +9,7 @@ pub(crate) struct Template {
     pub(crate) id: ID,
     /// A short, human-readable name for the template.
     name: String,
-    /// An extended description of what the template does.
+    /// Indicates if the template is ready for initialization.
     description: String,
     /// Where the source code for this template can be found, along with a README describing how to use it.
     repo_url: Url,
@@ -30,4 +30,35 @@ pub(crate) enum Language {
     Python,
     Rust,
     Typescript,
+    Graphql
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_template_graphql_language_support() {
+        let json_data = r#"
+        [
+            {
+                "id": "template",
+                "name": "Template",
+                "description": "This is a template",
+                "repo_url": "https://example.com/repo",
+                "download_url": "https://example.com/download",
+                "language": "GRAPHQL"
+            }
+        ]
+        "#;
+
+        let templates: Vec<Template> = serde_json::from_str(json_data)
+            .expect("Failed to parse templates.json into Template structs");
+
+        // Ensure the second template has init_ready is set to true
+        let template = &templates[1];
+        assert_eq!(template.id, ID::from("template"));
+        assert_eq!(template.language, Language::Graphql);
+    }
+}
+
